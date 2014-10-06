@@ -53,6 +53,7 @@
             <li>in this directory</li>
           </ul>
         </section>
+        
 				<section>
 					<h1>Node.js Lab</h1>
 					<h3><a target="_blank" href="http://x.co/nodejs">x.co/nodejs</a></h3>
@@ -85,8 +86,89 @@
         </section>
 
 				<section>
-          
-				</section>
+          <h3>Tools Installed?</h3>
+          Open a console/command/terminal window.<br/>
+          Type: node -v<br/>
+          Expect: v0.10.31 or similar<br/>
+          Type: npm -v<br/>
+          Expect: 2.1.2 or similar<br/>
+        </section>
+
+        <section>
+          <ul>
+            <li>Create an empty directory (e.g. "statuscheck")</li>
+            <li>From command/console, run:</li>
+            <ul>
+              <li><span style="font-family: courier, monospace; font-weight: bold">npm install request</span></li>
+            </ul>
+            <li>in this directory.</li>
+            <li>While this is running...</li>
+          </ul>
+        </section>
+
+        <section>
+          Edit/create file called index.js in this directory and open it in an editor. e.g.:<br/>
+          subl index.js<br/>
+          Add code:<br/>
+          var request = require('request');<br/>
+
+            request('http://linksilk.com', function(error,response,body){<br/>
+            console.log(response.statusCode);<br/>
+            });<br/>
+          Replace http://linksilk.com with one of your or your client’s websites.<br/>
+          Save file.<br/>
+        </section>
+
+        <section>
+          (No error if request got installed.)<br/>
+        At terminal run “node index.js”, expect error:<br/>
+          module.js:340<br/>
+          throw err;<br/>
+          ^<br/>
+          Error: Cannot find module 'request'
+        </section>
+
+        <section>
+        npm install request
+        </section>
+
+        <section>
+        node index.js, expect HTTP status such as 200, 301, 404 etc.<br/>
+          Edit console.log and put site name in front:<br/>
+          console.log('linksilk.com: ' + response.statusCode);<br/>
+          Run: node index.js<br/>
+          Expect: Site + status
+        </section>
+
+        <section>
+        Duplicate 3 request lines and change second set of lines to a different URL.
+          Use www.linksilk.com<br/>
+          Expect 200 for second result and not 301.<br/>
+          Why did this happen and not 301?<br/>
+          followRedirect<br/>
+        </section>
+
+        <section>
+        Change second request to use an object:<br/>
+          var options = {<br/>
+          followRedirect: false,<br/>
+          url: 'http://www.linksilk.com'<br/>
+          };
+        </section>
+
+        <section>
+        Open http-status-check project<br/>
+          compare node_modules folders<br/>
+          Open /lib/uriCheck.js<br/>
+          Find and compare parts in this file to parts in example just executed.<br/>
+        </section>
+
+        <section>
+        Return to example, add:<br/>
+          Append: console.log(‘done’);<br/>
+          Run: expect ‘done’ to appear first.<br/>
+          Why "done" before other results?
+        </section>
 
 				<section>
 					<h1>THE END</h1>
