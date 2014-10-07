@@ -45,7 +45,7 @@
         <section>
           <h3>While you're waiting...</h3>
           <ul>
-            <li>Create an empty directory (e.g. "statuscheck")</li>
+            <li>Create an empty directory (e.g. "nodelab")</li>
             <li>From command/console, run:</li>
             <ul>
               <li><span style="font-family: courier, monospace; font-weight: bold">npm install request</span></li>
@@ -53,7 +53,7 @@
             <li>in this directory</li>
           </ul>
         </section>
-        
+
 				<section>
 					<h1>Node.js Lab</h1>
 					<h3><a target="_blank" href="http://x.co/nodejs">x.co/nodejs</a></h3>
@@ -80,23 +80,25 @@
           <ul>
             <li class="fragment">Long intros bore me so...</li>
             <li class="fragment">...dive in and write some code</li>
-            <li class="fragment">Compare written code to HTTP Status Check</li>
             <li class="fragment">How to learn Node.js</li>
+            <li class="fragment">Compare written code to HTTP Status Check</li>
           </ul>
         </section>
 
 				<section>
           <h3>Tools Installed?</h3>
+          <pre>
           Open a console/command/terminal window.<br/>
           Type: node -v<br/>
           Expect: v0.10.31 or similar<br/>
           Type: npm -v<br/>
           Expect: 2.1.2 or similar<br/>
+          </pre>
         </section>
 
         <section>
           <ul>
-            <li>Create an empty directory (e.g. "statuscheck")</li>
+            <li>Create an empty directory (e.g. "nodelab")</li>
             <li>From command/console, run:</li>
             <ul>
               <li><span style="font-family: courier, monospace; font-weight: bold">npm install request</span></li>
@@ -107,74 +109,121 @@
         </section>
 
         <section>
-          Edit/create file called index.js in this directory and open it in an editor. e.g.:<br/>
-          subl index.js<br/>
-          Add code:<br/>
+          Create a file called index.js<br/>
+          open it in an editor. e.g. subl index.js<br/><br/>
+          <pre>
           var request = require('request');<br/>
-
-            request('http://linksilk.com', function(error,response,body){<br/>
+          request('http://linksilk.com', function(error,response,body){<br/>
             console.log(response.statusCode);<br/>
-            });<br/>
-          Replace http://linksilk.com with one of your or your client’s websites.<br/>
-          Save file.<br/>
+          });<br/>
+          </pre>
+          Replace http://linksilk.com with one of your websites.<br/>
+          Save file.
         </section>
 
         <section>
-          (No error if request got installed.)<br/>
-        At terminal run “node index.js”, expect error:<br/>
+          <p>Run file:</p>
+          <pre>node index.js</pre>
+        </section>
+
+        <section>
+          <p>Expect error if request was not installed:</p>
+          <pre>
           module.js:340<br/>
           throw err;<br/>
           ^<br/>
           Error: Cannot find module 'request'
+          </pre>
         </section>
 
         <section>
-        npm install request
+        <p>npm install request</p>
         </section>
 
         <section>
-        node index.js, expect HTTP status such as 200, 301, 404 etc.<br/>
-          Edit console.log and put site name in front:<br/>
+          <p>Expect:</p>
+          <pre>200 (or other HTTP status)</pre>
+          <p>If request was installed</p>
+        </section>
+
+        <section>
+          <p>What just happened?</p>
+        </section>
+
+        <section>
+          <p>Edit console.log and put site name in front:</p>
+          <pre>
           console.log('linksilk.com: ' + response.statusCode);<br/>
+          </pre>
           Run: node index.js<br/>
           Expect: Site + status
         </section>
 
         <section>
-        Duplicate 3 request lines and change second set of lines to a different URL.
+          <p>Duplicate 3 request lines and change second set of lines to a different URL.</p>
+          <pre>
           Use www.linksilk.com<br/>
-          Expect 200 for second result and not 301.<br/>
-          Why did this happen and not 301?<br/>
-          followRedirect<br/>
+          </pre>
+        </section>
+
+        <section>
+          <p>Expecting 301 for second result and not 200.</p>
+          <p>Why did this happen?</p>
+          <p>What is the result in a browser?</p>
         </section>
 
         <section>
         Change second request to use an object:<br/>
+          <pre>
           var options = {<br/>
           followRedirect: false,<br/>
           url: 'http://www.linksilk.com'<br/>
           };
+          </pre>
         </section>
 
         <section>
-        Open http-status-check project<br/>
-          compare node_modules folders<br/>
-          Open /lib/uriCheck.js<br/>
-          Find and compare parts in this file to parts in example just executed.<br/>
-        </section>
-
-        <section>
-        Return to example, add:<br/>
+          Back to example<br/>
+          <pre>
           Append: console.log(‘done’);<br/>
           Run: expect ‘done’ to appear first.<br/>
+          </pre>
           Why "done" before other results?
+        </section>
+
+        <section>
+          <p>How to Learn Node.js</p>
+          <ul>
+            <li>Tinker with this file.</li>
+            <li>Add more sites you are interested in.</li>
+            <li>Think of more tests you can do</li>
+          </ul>
+        </section>
+
+        <section>
+          <p>Open http-status-check project</p>
+          <p>Review samplesites.js</p>
+        </section>
+
+        <section>
+          <p>Compare http-status-check to our file</p>
+          <pre>
+          compare node_modules folders<br/>
+          Open /lib/uriCheck.js<br/>
+          Find and compare common sections.<br/>
+          </pre>
+        </section>
+
+        <section>
+          <h2>GitHub</h2>
+          <p>How do forks, clones and pull requests work?</p>
         </section>
 
 				<section>
 					<h1>THE END</h1>
 					<h3>Questions?</h3>
           <ul>
-            <li>Guy: <a href="http://twitter.com/wildfiction">@wildfiction</a></li>
+            <li>Guy: <a target="_blank" href="http://twitter.com/wildfiction">@wildfiction</a></li>
           </ul>
 				</section>
 
